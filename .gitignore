@@ -1,0 +1,11 @@
+# PDMX dataset — 49 GB, third-party, re-downloadable from Zenodo. NEVER commit.
+PDMX-lib/
+PDMX/
+
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# OS noise
+.DS_Store
