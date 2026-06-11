@@ -41,9 +41,14 @@ python3 -m venv .venv
 ## Fichiers de données
 
 - `corpus.csv` — les 8 œuvres choisies (work_id, **année**, tonalité, **titre**, chemins). Saisi à la main.
-- `features_auto.csv` — traits objectifs extraits par music21 (total + main droite).
-- `cadence_candidates.csv` — cadences V→I proposées (PAC / IAC) à valider.
+- `features_auto.csv` — traits objectifs extraits par music21 (total + main droite). **Généré.**
+- `cadence_candidates.csv` — cadences V→I proposées (PAC / IAC) à valider. **Généré.**
 - `pac_annotations.csv` — jugements humains sur la première CP (saisie manuelle, jamais écrasée).
+
+> ⚠️ **Ne pas éditer à la main `features_auto.csv` ni `cadence_candidates.csv`** : ils sont
+> entièrement **réécrits (écrasés) à chaque exécution** de `extract_features.py` — toute
+> modification manuelle sera perdue. Les saisies à la main vont **uniquement** dans
+> `pac_annotations.csv`, qu'aucun script n'écrit.
 
 ## Méthodologie : humain dans la boucle
 

@@ -210,6 +210,8 @@ def main():
         for c in cands:
             cand_out.append({"work_id": wid, **c})
 
+    # NOTE: mode "w" overwrites these two files on every run -- do not hand-edit them
+    # (manual edits are lost). Human annotations live only in pac_annotations.csv.
     with open("features_auto.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(feat_out[0].keys()))
         w.writeheader(); w.writerows(feat_out)
