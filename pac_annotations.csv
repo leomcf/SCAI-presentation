@@ -1,9 +1,9 @@
 work_id,first_pac_measure,first_pac_beat,pac_key,n_evaded_before,justification
-K.279/i,3,1.0,C major,0,DEMO PAC (algo suggestion)
-K.309/i,8,1.0,C major,1,DEMO PAC (algo suggestion)
-K.310/i,6,4.0,A minor,0,DEMO IAC(fallback) (algo suggestion)
-K.330/i,12,1.0,C major,0,DEMO PAC (algo suggestion)
-K.457/i,22,1.33,C minor,0,DEMO IAC(fallback) (algo suggestion)
-K.545/i,2,3.0,C major,0,DEMO PAC (algo suggestion)
-K.570/i,3,1.0,B-flat major,0,DEMO PAC (algo suggestion)
-K.576/i,2,1.0,D major,0,DEMO PAC (algo suggestion)
+K.279/i,,,,,
+K.309/i,,,,,
+K.310/i,,,,,
+K.330/i,,,,,
+K.457/i,,,,,
+K.545/i,,,,,
+K.570/i,,,,,
+K.576/i,,,,,

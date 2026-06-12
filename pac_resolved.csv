@@ -1,9 +1,9 @@
 work_id,year,title,key_nominal,time_signature,has_anacrusis,anacrusis_ql,first_pac_measure,first_pac_beat,first_pac_offset_ql,pac_key,n_evaded_before,justification
-K.279/i,1775,Piano Sonata No 1 Mozart KV 279,C major,4/4,no,0.0,3,1.0,8.0,C major,0,DEMO PAC (algo suggestion)
-K.309/i,1777,sonate mozart n7 C M,C major,4/4,no,0.0,8,1.0,28.0,C major,1,DEMO PAC (algo suggestion)
-K.310/i,1778,Mozart Sonata No.8 KV.310 1st,A minor,4/4,no,0.0,6,4.0,23.0,A minor,0,DEMO IAC(fallback) (algo suggestion)
-K.330/i,1783,Sonate in C KV 330-1.Allegro moderato,C major,2/4,no,0.0,12,1.0,22.0,C major,0,DEMO PAC (algo suggestion)
-K.457/i,1784,Mozart: Klaviersonate KV 457 - 1 expozice,C minor,4/4,no,0.0,22,1.33,84.33,C minor,0,DEMO IAC(fallback) (algo suggestion)
-K.545/i,1788,Sonata No. 16 K. 545 (1st movement),C major,4/4,no,0.0,2,3.0,6.0,C major,0,DEMO PAC (algo suggestion)
-K.570/i,1789,Mozart - Sonata in Bb K 570 Movement I,B-flat major,3/4,no,0.0,3,1.0,6.0,B-flat major,0,DEMO PAC (algo suggestion)
-K.576/i,1789,Mozart - Piano Sonata No. 18 in D: Allegro,D major,6/8,yes,2.5,2,1.0,0.5,D major,0,DEMO PAC (algo suggestion)
+K.279/i,1775,Piano Sonata No 1 Mozart KV 279,C major,4/4,no,0.0,,,,,,
+K.309/i,1777,sonate mozart n7 C M,C major,4/4,no,0.0,,,,,,
+K.310/i,1778,Mozart Sonata No.8 KV.310 1st,A minor,4/4,no,0.0,,,,,,
+K.330/i,1783,Sonate in C KV 330-1.Allegro moderato,C major,2/4,no,0.0,,,,,,
+K.457/i,1784,Mozart: Klaviersonate KV 457 - 1 expozice,C minor,4/4,no,0.0,,,,,,
+K.545/i,1788,Sonata No. 16 K. 545 (1st movement),C major,4/4,no,0.0,,,,,,
+K.570/i,1789,Mozart - Sonata in Bb K 570 Movement I,B-flat major,3/4,no,0.0,,,,,,
+K.576/i,1789,Mozart - Piano Sonata No. 18 in D: Allegro,D major,6/8,yes,2.5,,,,,,
