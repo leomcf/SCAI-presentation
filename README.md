@@ -5,7 +5,7 @@ Analyse de **8 premiers mouvements de sonates pour piano de Mozart**, étalés d
 de l'ouverture jusqu'à la **première cadence parfaite (CP / PAC)** dans le ton principal —
 pour comparer les traits du *jeune* et du *vieux* Mozart.
 
-**Équipe :** Leo McFadden · Ali Said Achimo · Thibault Daraignès
+**Équipe :** Leo McFadden · Thibault Daraignès
 
 Le récit complet de la démarche (objectifs, obstacles, volte-face Brahms, méthodologie)
 est dans [`resume_demarche.md`](resume_demarche.md). Le plan technique est dans

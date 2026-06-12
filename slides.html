@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mozart — ouverture → première cadence parfaite</title>
+  <!-- reveal.js VENDORISÉ dans le repo (revealjs/) : aucune connexion requise -->
+  <link rel="stylesheet" href="revealjs/reset.css">
+  <link rel="stylesheet" href="revealjs/reveal.css">
+  <link rel="stylesheet" href="revealjs/theme/white.css">
+  <style>
+    .reveal h1, .reveal h2, .reveal h3 { color: #1a1a2e; letter-spacing: -0.5px; }
+    .reveal section img { border: none; box-shadow: none; background: none; }
+    .reveal .small { font-size: 0.62em; }
+    .reveal .muted { color: #777; }
+    .reveal .accent { color: #c0392b; }
+    .reveal .blue { color: #2c6fbb; }
+    .reveal table { font-size: 0.6em; }
+    .reveal .wip { display:inline-block; background:#ffe9a8; color:#7a5c00;
+                   padding:2px 10px; border-radius:6px; font-size:0.5em; vertical-align:middle; }
+    .reveal ul { width: 92%; }
+  </style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+  <!-- 1. TITRE -->
+  <section>
+    <h2>Du début à la première cadence parfaite</h2>
+    <h3 class="muted" style="margin-top:0">Jeune Mozart vs vieux Mozart</h3>
+    <p>8 premiers mouvements de sonates pour piano · 1775 → 1789</p>
+    <p class="small muted">Leo McFadden · Thibault Daraignès<br>
+       École d'été en humanités numériques</p>
+  </section>
+
+  <!-- 2. QUESTION & CORPUS -->
+  <section>
+    <h3>La question &amp; le corpus</h3>
+    <ul>
+      <li>Comparer l'<strong>ouverture</strong> de chaque premier mouvement, du début jusqu'à
+          la <strong>première cadence parfaite (CP)</strong> dans le ton principal.</li>
+      <li>Un seul compositeur → variable contrôlée : on lit l'<strong>évolution</strong>,
+          du jeune au vieux Mozart.</li>
+      <li><strong>8 sonates</strong> étalées sur sa vie : K.279 (1775) → K.576 (1789, sa dernière).</li>
+    </ul>
+    <p class="small muted">Corpus : K.279 · K.309 · K.310 · K.330 · K.457 · K.545 · K.570 · K.576 —
+       données PDMX (MusicXML), analyse music21.</p>
+  </section>
+
+  <!-- 3. MÉTHODE -->
+  <section>
+    <h3>Méthode : l'humain dans la boucle</h3>
+    <ul>
+      <li>L'<strong class="blue">ordinateur</strong> mesure (ambitus, mouvement, mètre, anacrouse)
+          et <em>propose</em> les cadences.</li>
+      <li>L'<strong class="accent">humain</strong> <em>tranche</em> sur la première CP et consigne
+          sa décision comme une donnée (avec justification).</li>
+      <li>Position enregistrée en <strong>durée (noires)</strong>, pas en n° de mesure →
+          comparable malgré les mètres différents et les anacrouses.</li>
+    </ul>
+    <p class="small muted">La détection automatique des cadences est peu fiable : ce choix en fait
+       une force méthodologique, pas une faiblesse.</p>
+  </section>
+
+  <!-- 4. AMBITUS & MOUVEMENT -->
+  <section>
+    <h3>Ambitus &amp; mouvement au fil du temps</h3>
+    <img src="fig_timeline.png" alt="Traits au fil du temps" style="width:90%">
+    <p class="small">○ total (2 mains) · ● main droite (mélodie) — <span class="accent">rouge = mineur</span>.
+       <br><strong>K.310</strong> : le caractère « disjoint » vient de la <em>basse</em> (total 0,51)
+       et non de la mélodie (MD 0,50).</p>
+  </section>
+
+  <!-- 5. TONALITÉS -->
+  <section>
+    <h3>Tonalités — cycle des quintes</h3>
+    <img src="fig_circle_of_fifths.png" alt="Cycle des quintes" style="height:480px">
+    <p class="small">Position calculée via <code>music21 (.sharps)</code>. Corpus centré sur
+       <strong>do majeur</strong> ; les œuvres tardives (K.570, K.576) s'en éloignent.</p>
+  </section>
+
+  <!-- 6. VERS LA CLÔTURE (PAC) — placeholder -->
+  <section>
+    <h3>Vers la clôture : la première CP <span class="wip">données en cours</span></h3>
+    <ul>
+      <li><strong>Temps jusqu'à la 1re CP</strong> (en noires) : Mozart retarde-t-il davantage
+          la clôture dans ses œuvres tardives ?</li>
+      <li><strong>Cadences évitées</strong> avant la CP : mesure de l'expansion de l'exposition.</li>
+      <li>Cas mineurs (K.310, K.457) : pas de CP nette → repli sur une cadence imparfaite.</li>
+    </ul>
+    <p class="small muted"><strong>Limites :</strong> n = 8 (tendances illustratives, non statistiques) ·
+       partitions PDMX = transcriptions d'amateurs.</p>
+    <p class="small muted">Graphique <em>temps jusqu'à la 1re CP</em> à insérer dès que les annotations
+       de Thibault sont prêtes.</p>
+  </section>
+
+</div></div>
+<script src="revealjs/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash: true, slideNumber: 'c/t', transition: 'fade' });
+</script>
+</body>
+</html>
