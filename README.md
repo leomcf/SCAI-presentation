@@ -30,11 +30,15 @@ python3 -m venv .venv
 |---|---|---|
 | `filter_corpus.py` | filtre l'index PDMX → candidates piano solo Mozart | `candidates_mozart.csv` |
 | `extract_features.py` | mesures music21 (mètre, anacrouse, ambitus, mouvement) + propose les cadences | `features_auto.csv`, `cadence_candidates.csv` |
+| ✋ *(à la main)* | saisir la première CP dans `pac_annotations.csv` (5 colonnes) | `pac_annotations.csv` |
+| `resolve_annotations.py` | joint tout + calcule `first_pac_offset_ql` via music21 | `pac_resolved.csv` |
 | `plot_features.py` | graphiques (chronologie + cycle des quintes) | `fig_timeline.png`, `fig_circle_of_fifths.png` |
 
 ```bash
 .venv/bin/python filter_corpus.py
 .venv/bin/python extract_features.py
+# --- éditer pac_annotations.csv à la main (voir ci-dessous) ---
+.venv/bin/python resolve_annotations.py
 .venv/bin/python plot_features.py
 ```
 
@@ -43,12 +47,15 @@ python3 -m venv .venv
 - `corpus.csv` — les 8 œuvres choisies (work_id, **année**, tonalité, **titre**, chemins). Saisi à la main.
 - `features_auto.csv` — traits objectifs extraits par music21 (total + main droite). **Généré.**
 - `cadence_candidates.csv` — cadences V→I proposées (PAC / IAC) à valider. **Généré.**
-- `pac_annotations.csv` — jugements humains sur la première CP (saisie manuelle, jamais écrasée).
+- `pac_annotations.csv` — **le seul fichier à éditer à la main.** 5 colonnes : `first_pac_measure`,
+  `first_pac_beat`, `pac_key`, `n_evaded_before`, `justification`. À ouvrir dans **VS Code**
+  (pas Excel : il transforme `4/4` en date). Aucun script ne l'écrit.
+- `pac_resolved.csv` — table finale prête pour l'analyse (annotations + traits + `offset_ql`). **Généré.**
 
-> ⚠️ **Ne pas éditer à la main `features_auto.csv` ni `cadence_candidates.csv`** : ils sont
-> entièrement **réécrits (écrasés) à chaque exécution** de `extract_features.py` — toute
-> modification manuelle sera perdue. Les saisies à la main vont **uniquement** dans
-> `pac_annotations.csv`, qu'aucun script n'écrit.
+> ⚠️ **Ne pas éditer à la main les fichiers « Généré »** (`features_auto.csv`,
+> `cadence_candidates.csv`, `pac_resolved.csv`) : ils sont **réécrits à chaque exécution** du
+> script correspondant — toute modification manuelle sera perdue. Seul `pac_annotations.csv`
+> se saisit à la main.
 
 ## Méthodologie : humain dans la boucle
 
