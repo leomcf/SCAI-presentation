@@ -32,51 +32,81 @@ colors  = [MIN if m else MAJ for m in is_min]
 
 
 def jitter_years(ys):
-    """nudge coincident years apart so labels don't overlap (1789 has two)."""
+    """nudge coincident years apart so labels don't overlap (1789 has two).
+
+    Returns (jittered_x, dup_index) where dup_index is the 0-based rank of a year
+    among its duplicates — used to stagger label vspace so they don't collide.
+    """
     ys = list(ys); seen = {}
-    out = []
+    xs, dups = [], []
     for y in ys:
         k = seen.get(y, 0); seen[y] = k + 1
-        out.append(y + k * 0.18)
-    return out
+        xs.append(y + k * 0.35); dups.append(k)
+    return xs, dups
+
+
+# (total column, RH column, y-label, title, slug). Filled marker = RH (melody),
+# hollow marker = total (both hands). Slug names the standalone per-panel PNG.
+FEATS = [
+    ("ambitus_total_st", "ambitus_rh_st", "Ambitus (demi-tons)", "Étendue de l'ambitus", "ambitus"),
+    ("leap_ratio_total", "leap_ratio_rh", "Proportion de sauts", "Mouvement disjoint (sauts)", "leap"),
+    ("step_ratio_total", "step_ratio_rh", "Proportion conjointe", "Mouvement conjoint (degrés)", "step"),
+]
+
+
+def _draw_panel(ax, kt, krh, ylab, title, xs, dups):
+    """Draw one feature panel onto ax (shared by the composite and the standalones)."""
+    yt, yrh = col(kt), col(krh)
+    # connect RH points in chronological order
+    order = sorted(range(len(years)), key=lambda i: years[i])
+    ax.plot([xs[i] for i in order], [yrh[i] for i in order],
+            color="#999", lw=1, zorder=1, alpha=0.5)
+    # total = hollow, RH = filled, thin grey link between the pair
+    for x, vt, vrh, c in zip(xs, yt, yrh, colors):
+        ax.plot([x, x], [vt, vrh], color="#bbb", lw=0.8, zorder=1)
+    ax.scatter(xs, yt, facecolors="none", edgecolors=colors, s=120,
+               linewidth=1.6, zorder=2)
+    ax.scatter(xs, yrh, c=colors, s=120, zorder=3, edgecolor="white", linewidth=1.2)
+    # stagger label vspace for same-year works (K.570/K.576) so they don't collide
+    for x, y, lab, k in zip(xs, yrh, labels, dups):
+        ax.annotate(lab, (x, y), xytext=(0, -13 - 12 * k), textcoords="offset points",
+                    ha="center", fontsize=8)
+    ax.set_title(title); ax.set_xlabel("Année de composition"); ax.set_ylabel(ylab)
+    ax.set_xticks([1775, 1778, 1781, 1784, 1787, 1790])
+    # breathing room so labels/points don't crowd the axes
+    ax.margins(x=0.08, y=0.12)
+
+
+def _legend_handles():
+    return [plt.Line2D([], [], marker="o", ls="", color=MAJ, label="Majeur"),
+            plt.Line2D([], [], marker="o", ls="", color=MIN, label="Mineur"),
+            plt.Line2D([], [], marker="o", ls="", mfc="none", mec="#444", label="Total (2 mains)"),
+            plt.Line2D([], [], marker="o", ls="", color="#444", label="Main droite (mélodie)")]
 
 
 def timeline():
-    # (total column, RH column, y-label, title). Filled marker = RH (melody),
-    # hollow marker = total (both hands).
-    feats = [
-        ("ambitus_total_st", "ambitus_rh_st", "Ambitus (demi-tons)", "Étendue de l'ambitus"),
-        ("leap_ratio_total", "leap_ratio_rh", "Proportion de sauts", "Mouvement disjoint (sauts)"),
-        ("step_ratio_total", "step_ratio_rh", "Proportion conjointe", "Mouvement conjoint (degrés)"),
-    ]
+    xs, dups = jitter_years(years)
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.8))
-    xs = jitter_years(years)
-    for ax, (kt, krh, ylab, title) in zip(axes, feats):
-        yt, yrh = col(kt), col(krh)
-        # connect RH points in chronological order
-        order = sorted(range(len(years)), key=lambda i: years[i])
-        ax.plot([xs[i] for i in order], [yrh[i] for i in order],
-                color="#999", lw=1, zorder=1, alpha=0.5)
-        # total = hollow, RH = filled, thin grey link between the pair
-        for x, vt, vrh, c in zip(xs, yt, yrh, colors):
-            ax.plot([x, x], [vt, vrh], color="#bbb", lw=0.8, zorder=1)
-        ax.scatter(xs, yt, facecolors="none", edgecolors=colors, s=120,
-                   linewidth=1.6, zorder=2)
-        ax.scatter(xs, yrh, c=colors, s=120, zorder=3, edgecolor="white", linewidth=1.2)
-        for x, y, lab in zip(xs, yrh, labels):
-            ax.annotate(lab, (x, y), xytext=(0, -13), textcoords="offset points",
-                        ha="center", fontsize=8)
-        ax.set_title(title); ax.set_xlabel("Année de composition"); ax.set_ylabel(ylab)
-        ax.set_xticks([1775, 1778, 1781, 1784, 1787, 1790])
-    handles = [plt.Line2D([], [], marker="o", ls="", color=MAJ, label="Majeur"),
-               plt.Line2D([], [], marker="o", ls="", color=MIN, label="Mineur"),
-               plt.Line2D([], [], marker="o", ls="", mfc="none", mec="#444", label="Total (2 mains)"),
-               plt.Line2D([], [], marker="o", ls="", color="#444", label="Main droite (mélodie)")]
-    fig.legend(handles=handles, loc="upper right", frameon=False, fontsize=9)
+    for ax, (kt, krh, ylab, title, _) in zip(axes, FEATS):
+        _draw_panel(ax, kt, krh, ylab, title, xs, dups)
+    fig.legend(handles=_legend_handles(), loc="upper right", frameon=False, fontsize=9)
     fig.suptitle("Mozart, premiers mouvements : traits au fil du temps (jeune → vieux)",
                  fontsize=15, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.92])
     fig.savefig("fig_timeline.png"); print("-> fig_timeline.png")
+
+
+def timeline_panels():
+    """One standalone PNG per feature, for the per-graphic detail slides."""
+    xs, dups = jitter_years(years)
+    for kt, krh, ylab, title, slug in FEATS:
+        fig, ax = plt.subplots(figsize=(10.5, 6.2))
+        _draw_panel(ax, kt, krh, ylab, title, xs, dups)
+        ax.legend(handles=_legend_handles(), loc="best", frameon=False, fontsize=9)
+        fig.tight_layout()
+        out = f"fig_timeline_{slug}.png"
+        fig.savefig(out); print(f"-> {out}")
+        plt.close(fig)
 
 
 def parse_key(nominal):
@@ -126,4 +156,5 @@ def circle_of_fifths():
 
 if __name__ == "__main__":
     timeline()
+    timeline_panels()
     circle_of_fifths()
