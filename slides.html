@@ -28,7 +28,7 @@
   <section>
     <h2>Du début à la première cadence parfaite</h2>
     <h3 class="muted" style="margin-top:0">Jeune Mozart vs vieux Mozart</h3>
-    <p>8 premiers mouvements de sonates pour piano · 1775 → 1789</p>
+    <p>7 premiers mouvements de sonates pour piano · 1775 → 1789</p>
     <p class="small muted">Leo McFadden · Thibault Daraignès<br>
        École d'été en humanités numériques</p>
   </section>
@@ -38,13 +38,13 @@
     <h3>La question &amp; le corpus</h3>
     <ul>
       <li>Comparer l'<strong>ouverture</strong> de chaque premier mouvement, du début jusqu'à
-          la <strong>première cadence parfaite (CP)</strong> dans le ton principal.</li>
+          la <strong>première cadence parfaite (CP)</strong> dans la tonalité principale.</li>
       <li>Un seul compositeur → variable contrôlée : on lit l'<strong>évolution</strong>,
           du jeune au vieux Mozart.</li>
-      <li><strong>8 sonates</strong> étalées sur sa vie : K.279 (1775) → K.576 (1789, sa dernière).</li>
+      <li><strong>7 sonates</strong> étalées sur sa vie : K.279 (1775) → K.576 (1789, sa dernière).</li>
     </ul>
-    <p class="small muted">Corpus : K.279 · K.309 · K.310 · K.330 · K.457 · K.545 · K.570 · K.576 —
-       données PDMX (MusicXML), analyse music21.</p>
+    <p class="small muted">Corpus : K.279 · K.309 · K.310 · K.457 · K.545 · K.570 · K.576 —
+       données PDMX (MusicXML), analyse avec music21 (librairie python).</p>
   </section>
 
   <!-- 3. MÉTHODE -->
@@ -57,6 +57,19 @@
           sa décision comme une donnée (avec justification).</li>
       <li>Position enregistrée en <strong>durée (noires)</strong>, pas en n° de mesure →
           comparable malgré les mètres différents et les anacrouses.</li>
+    </ul>
+    <p class="small muted">La détection automatique des cadences est peu fiable : ce choix en fait
+       une force méthodologique, pas une faiblesse.</p>
+  </section>
+
+  <section>
+    <h3>Pourquoi les cadences parfaites ?</h3>
+    <ul>
+      <li>Les cadences sont analogues aux points dans une phrase.</li>
+      <li>Ce sont des points de résolution <em>dans la musique tonale.</em></li>
+      <li>Elles constituent donc une façon fiable de mesurer l'attente.</li>
+      <li>Moins il y a de cadences, plus il y a de l'attente, et moins les attentes sont satisfaites.</li>
+      <li>Dans les musiques très élémentaires, on peut trouver des patterns cadentiels très réguliers.</li>
     </ul>
     <p class="small muted">La détection automatique des cadences est peu fiable : ce choix en fait
        une force méthodologique, pas une faiblesse.</p>
