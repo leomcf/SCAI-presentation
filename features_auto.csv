@@ -2,7 +2,6 @@ work_id,year,key_nominal,time_signature,has_anacrusis,anacrusis_ql,estimated_key
 K.279/i,1775,C major,4/4,no,0.0,C major,57,40,31,88,48,88,0.503,0.497,conjunct,0.563,0.437,conjunct,2151,1872
 K.309/i,1777,C major,4/4,no,0.0,C major,58,39,31,89,50,89,0.515,0.485,conjunct,0.594,0.406,conjunct,1012,889
 K.310/i,1778,A minor,4/4,no,0.0,a minor,58,32,31,89,57,89,0.488,0.512,disjunct,0.501,0.499,conjunct,1247,1182
-K.330/i,1783,C major,2/4,no,0.0,C major,46,32,43,89,57,89,0.516,0.484,conjunct,0.601,0.399,conjunct,1247,1117
 K.457/i,1784,C minor,4/4,no,0.0,E- major,60,49,29,89,40,89,0.532,0.468,conjunct,0.668,0.332,conjunct,434,365
 K.545/i,1788,C major,4/4,no,0.0,C major,53,34,36,89,55,89,0.614,0.386,conjunct,0.616,0.384,conjunct,754,586
 K.570/i,1789,B-flat major,3/4,no,0.0,B- major,55,32,34,89,57,89,0.55,0.45,conjunct,0.615,0.385,conjunct,1159,975

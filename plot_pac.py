@@ -99,7 +99,8 @@ def main():
                  fontsize=15, fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.93])
     fig.savefig("fig_pac_timeline.png")
-    print(f"-> fig_pac_timeline.png  ({len(data)}/8 oeuvres avec une CP resolue)")
+    n_corpus = sum(1 for _ in csv.DictReader(open("corpus.csv")))
+    print(f"-> fig_pac_timeline.png  ({len(data)}/{n_corpus} oeuvres avec une CP resolue)")
 
 
 if __name__ == "__main__":
